@@ -16,11 +16,12 @@ function recursiveFormatting(context) {
     var children = context.get(0).children;
     var index = 0;
     context.children().each(function () {
-      //for italicity
+        var clonedEle;
+        //for italicity
         if (children[index].style.fontStyle !== "") {
             if (children[index].style.fontStyle === "italic") {
                 children[index].style.fontStyle = null;
-                let clonedEle = $("<em></em>").append($(children[index]).clone());
+                clonedEle = $("<em></em>").append($(children[index]).clone());
                 $(children[index]).replaceWith(clonedEle.get(0));
             } else {
                 children[index].style.fontStyle = null;
@@ -30,7 +31,7 @@ function recursiveFormatting(context) {
         if (children[index].style.textDecoration !== "") {
             if (children[index].style.textDecoration === "underline") {
                 children[index].style.textDecoration = null;
-                let clonedEle = $("<u></u>").append($(children[index]).clone());
+                clonedEle = $("<u></u>").append($(children[index]).clone());
                 $(children[index]).replaceWith(clonedEle.get(0));
             } else {
                 children[index].style.textDecoration = null;
@@ -40,7 +41,7 @@ function recursiveFormatting(context) {
         if (children[index].style.fontWeight !== "") {
             if (children[index].style.fontWeight > "400") {
                 children[index].style.fontWeight = null;
-                let clonedEle = $("<strong></strong>").append($(children[index]).clone());
+                clonedEle = $("<strong></strong>").append($(children[index]).clone());
                 $(children[index]).replaceWith(clonedEle.get(0));
             } else {
                 children[index].style.fontWeight = null;
