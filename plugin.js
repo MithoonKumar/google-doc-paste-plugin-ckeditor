@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    CKEDITOR.plugins.add('googleDocSlidepastePlugin', {
+    CKEDITOR.plugins.add('googleDocpastePlugin', {
         requires: 'clipboard',
         init: function (editor) {
             editor.on('paste', function (evt) {
