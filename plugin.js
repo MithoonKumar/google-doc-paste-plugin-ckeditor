@@ -13,13 +13,14 @@
 })();
 
 function recursiveFormatting(context) {
-    for(let index = 0; index < context.childNodes.length; index++){
+    for(var index = 0; index < context.childNodes.length; index++){
+        var clonedEle, ele;
       //for italicity
         if (context.childNodes[index].style.fontStyle !== "") {
             if (context.childNodes[index].style.fontStyle === "italic") {
                 context.childNodes[index].style.fontStyle = null;
-                let clonedEle = context.childNodes[index].cloneNode(true);
-                let ele = document.createElement("em");
+                clonedEle = context.childNodes[index].cloneNode(true);
+                ele = document.createElement("em");
                 ele.append(clonedEle)
                 context.replaceChild(ele, context.childNodes[index]);
             } else {
@@ -30,8 +31,8 @@ function recursiveFormatting(context) {
         if (context.childNodes[index].style.textDecoration !== "") {
             if (context.childNodes[index].style.textDecoration === "underline") {
                 context.childNodes[index].style.textDecoration = null;
-                let clonedEle = context.childNodes[index].cloneNode(true);
-                let ele = document.createElement("u");
+                clonedEle = context.childNodes[index].cloneNode(true);
+                ele = document.createElement("u");
                 ele.append(clonedEle)
                 context.replaceChild(ele, context.childNodes[index]);
             } else {
@@ -42,8 +43,8 @@ function recursiveFormatting(context) {
         if (context.childNodes[index].style.fontWeight !== "") {
             if (context.childNodes[index].style.fontWeight > "400") {
                 context.childNodes[index].style.fontWeight = null;
-                let clonedEle = context.childNodes[index].cloneNode(true);
-                let ele = document.createElement("strong");
+                clonedEle = context.childNodes[index].cloneNode(true);
+                ele = document.createElement("strong");
                 ele.append(clonedEle)
                 context.replaceChild(ele, context.childNodes[index]);
             } else {
@@ -62,7 +63,7 @@ function formatting(str) {
     var parentCopy = document.createElement("div");
     parentCopy.innerHTML = str;
     var len = parentCopy.childNodes[0].children.length;
-    for(let i = 0; i<len; i++ ) {
+    for(var i = 0; i<len; i++ ) {
         parent.appendChild(parentCopy.childNodes[0].children[i].cloneNode(true));
     }
     recursiveFormatting (parent);
